@@ -39,7 +39,7 @@ function download_package() {
   var_name="$package"_exists
   var_name="$(echo $var_name | sed 's/[-\.]/_/g')"
   if [[ -z "${!var_name}" ]]; then
-    declare "$var_name"="true"
+    export "$var_name"="true"
     echo "Checking package '$package'"
     num_packages_found=$((num_packages_found+1))
   else
