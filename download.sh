@@ -37,7 +37,7 @@ function download_package() {
   package="$1"
   # First make sure we only handle each package once (there are circular dependencies)
   var_name="$package"_exists
-  var_name="$(echo $var_name | sed 's/[-\.]/_/g')"
+  var_name="$(echo $var_name | sed 's/[-\.]/_/g' | sed 's/\+/plus/g')"
   if [[ -z "${!var_name}" ]]; then
     export "$var_name"="true"
     echo "Checking package '$package'"
